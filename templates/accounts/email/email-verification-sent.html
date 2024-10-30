@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение почты - Task Planner</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/email-verification-sent.css' %}">
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Письмо отправлено!</h1>
+        <p>На ваш адрес электронной почты было отправлено письмо с подтверждением.</p>
+        <p>Пожалуйста, проверьте свою электронную почту и следуйте инструкциям в письме для подтверждения вашего аккаунта.</p>
+        <a href="{% url 'accounts:login' %}" class="btn-back">Вернуться на страницу входа</a>
+    </div>
+</body>
+</html>

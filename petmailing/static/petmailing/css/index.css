@@ -1,0 +1,87 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0e5ec, #f4f4f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Контейнер приветствия */
+.welcome-container {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.welcome-container:hover {
+    transform: scale(1.02);
+}
+
+/* Стили заголовка */
+h1 {
+    font-size: 2.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+/* Стили описания */
+p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    word-spacing: 0.2em;
+}
+
+/* Стили кнопок */
+.button-group .btn {
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 12px 0; /* Увеличен вертикальный отступ между кнопками */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+/* Основная кнопка */
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* Вспомогательная кнопка */
+.btn-secondary {
+    background-color: #008CBA;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #007ba7;
+    box-shadow: 0 6px 15px rgba(0, 140, 186, 0.4);
+}
+
+/* Стили для надписей под кнопками */
+.button-label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 10px; /* Увеличен верхний отступ для отделения от кнопок */
+    margin-bottom: 15px; /* Увеличен нижний отступ для отделения от следующего элемента */
+    text-align: center; /* Центрирование текста */
+}

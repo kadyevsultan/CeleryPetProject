@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение электронной почты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Подтверждение электронной почты</h1>
+        <p>Здравствуйте, {{ user.username }}!</p>
+        <p>Спасибо за регистрацию в Task Planner! Пожалуйста, подтвердите свою электронную почту, перейдя по следующей ссылке:</p>
+        <a href="{{ link }}" class="button">Подтвердить электронную почту</a>
+        <p>Если вы не регистрировались на нашем сайте, просто проигнорируйте это сообщение.</p>
+        <footer>
+            <p>С уважением,<br>Команда Task Planner</p>
+        </footer>
+        <strong>Token expires on {{ expiry|time:"TIME_FORMAT" }}</strong>
+    </div>
+</body>
+</html>
