@@ -1,11 +1,13 @@
+from asyncio import log
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, get_user_model, login, logout
-from django_email_verification import send_email
+from django.contrib.auth.decorators import login_required
+from django_email_verification import send_email, send_password, verify_email_view
 from django.contrib import messages
 
 User = get_user_model()
 
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, UserUpdateForm
 
 def register_user(request):
     if request.method == 'POST':
@@ -31,6 +33,40 @@ def register_user(request):
         form = RegistrationForm()
     return render(request, 'accounts/registration/register.html', {'form': form})
 
+
+# def password_reset_email(request):
+#     form = EmailVerificationForm()
+#     if request.method == 'POST':
+#         form = EmailVerificationForm(request.POST)
+        
+#         if form.is_valid():
+#             email = form.cleaned_data.get('email')
+#             user = User.objects.get(email=email)
+#             send_password(user)
+#             return redirect('/accounts/email-verification-sent/')
+#     else:
+#         form = EmailVerificationForm()
+            
+#     return render(request, 'accounts/password/password-reset-email.html', {'form': form})
+
+# def password_change(request):
+#     form = PasswordResetForm()
+#     if request.method == 'POST':
+#         form = PasswordResetForm(request.POST, instance=request.user)
+        
+#         if form.is_valid():
+#             password1 = form.cleaned_data.get('password1')
+#             password2 = form.cleaned_data.get('password2')
+#             user = User.objects.get(id=request.user.id)
+#             user.set_password(password1)
+#             user.save()
+#             return redirect('accounts:login')
+#     else:
+#         form = PasswordResetForm(instance=request.user)
+#     return render(request, 'accounts/password/password-change-template.html', {'form': form, 'username': request.user.username})
+      
+      
+
 def login_user(request):
     form = LoginForm()
     
@@ -45,7 +81,7 @@ def login_user(request):
         
         user = authenticate(request, username=username, password=password)
         
-        if request.user is not None and request.user.is_active:
+        if request.user is not None:
             login(request, user)
             return redirect('home')
         else:
@@ -58,3 +94,26 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('index')
+
+
+@login_required(login_url='accounts:login')
+def profile_user(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:profile')
+        
+    else:
+        form = UserUpdateForm(instance=request.user)
+    
+    context = {'form': form}
+    return render(request, 'accounts/profile/profile.html', context)
+
+@login_required(login_url='accounts:login')
+def delete_account_user(request):
+    user = User.objects.get(id=request.user.id)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('index')
+    return render(request, 'accounts/profile/delete-account-user.html')

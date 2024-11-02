@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <!-- Контент профиля -->
+    <main class="profile-container">
+        <h2>Профиль пользователя</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Поле для изменения email -->
+            {{ form|crispy }}
+
+            <!-- Кнопка для сохранения изменений -->
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </form>
+
+        <!-- Кнопка для удаления аккаунта -->
+        <a href='{% url "accounts:delete-account-user" %}'>
+            <button class="btn btn-danger">Удалить аккаунт</button>
+        </a>
+    </main>
+
+{% endblock content %}

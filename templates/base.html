@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Planner - Главная</title>
+    <link rel="stylesheet" href="{% static 'petmailing/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+</head>
+<body>
+    <div class='wrapper'>
+        <!-- Хэдер -->
+        <header>
+            <nav>
+                <a href="{% url 'home' %}"><h1>Task Planner</h1></a>
+                <ul>
+                    <li><a href="{% url 'home' %}">Главная</a></li>
+                    <li><a href="#">Добавить напоминание</a></li>
+                    <li>
+                        <a href="{% url 'accounts:profile' %}">
+                            <img src="{% static 'petmailing/images/account.png' %}" alt="Выйти" class="account-icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:logout' %}">
+                            <img src="{% static 'petmailing/images/exit.png' %}" alt="Выйти" class="exit-icon">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>{% block content %}{% endblock content %}</main>
+            <!-- Футер -->
+        <footer>
+            <p>&copy; {{ current_year }} Task Planner. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>

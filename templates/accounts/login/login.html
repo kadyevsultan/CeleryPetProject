@@ -18,8 +18,30 @@
             {{ form|crispy }}
             <input type="submit" value='Войти' class="btn-submit">
         </form>
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for field in form %}
+                    {% if field.errors %}
+                        {{ field.errors }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">
+                        {{ message|safe }}
+
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
         <p class="register-link">Нет аккаунта? <a href="{% url 'accounts:register' %}">Зарегистрируйтесь!</a></p>
-        <p class="forgot-password">Забыли пароль? <a href="#">Восстановите его</a></p>
+        <p class="forgot-password">Забыли пароль? <a href="{% url 'accounts:password-reset' %}">Восстановите его</a></p>
     </div>
 </body>
 </html>

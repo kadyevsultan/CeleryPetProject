@@ -10,4 +10,4 @@
 
 С уважением,
 Команда Task Planner
-The token expires on {{ expiry|time:"TIME_FORMAT" }}
+Ваш регистрационный токен истекает в {{ expiry|time:"TIME_FORMAT" }}

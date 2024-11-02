@@ -155,15 +155,15 @@ EMAIL_MAIL_TOKEN_LIFE = 60 * 60  # one hour
 EMAIL_MAIL_PAGE_TEMPLATE = 'accounts/email/email-success-template.html'
 EMAIL_MAIL_CALLBACK = email_verified_callback
 
-# Password Recovery Settings (mandatory for email sending)
-# EMAIL_PASSWORD_SUBJECT = 'Change your password {{ user.username }}'
-# EMAIL_PASSWORD_HTML = 'password_body.html'
-# EMAIL_PASSWORD_PLAIN = 'password_body.txt'
+# # Password Recovery Settings (mandatory for email sending)
+# EMAIL_PASSWORD_SUBJECT = 'Смени свой пароль {{ user.username }}'
+# EMAIL_PASSWORD_HTML = 'accounts/password/password-body.html'
+# EMAIL_PASSWORD_PLAIN = 'accounts/password/password-body.txt'
 # EMAIL_PASSWORD_TOKEN_LIFE = 60 * 10  # 10 minutes
 
-# Password Recovery Settings (mandatory for builtin view)
-# EMAIL_PASSWORD_PAGE_TEMPLATE = 'password_changed_template.html'
-# EMAIL_PASSWORD_CHANGE_PAGE_TEMPLATE = 'password_change_template.html'
+# # Password Recovery Settings (mandatory for builtin view)
+# EMAIL_PASSWORD_PAGE_TEMPLATE = 'accounts/password/password-changed-template.html'
+# EMAIL_PASSWORD_CHANGE_PAGE_TEMPLATE = 'accounts/password/password-change-template.html'
 # EMAIL_PASSWORD_CALLBACK = password_change_callback
 
 # For Django Email Backend
