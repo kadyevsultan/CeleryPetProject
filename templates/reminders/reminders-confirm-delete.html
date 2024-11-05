@@ -1,0 +1,24 @@
+<!-- reminder_confirm_delete.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Подтверждение удаления</h2>
+    <p>Вы уверены, что хотите удалить напоминание "{{ reminder.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{% url 'reminders:reminders-home' %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+
+<style>
+    .container {
+        max-width: 600px; /* Укажите максимальную ширину контейнера */
+        margin: 20px auto; /* Установите отступы сверху и снизу, и выровняйте по центру */
+        padding: 20px; /* Добавьте внутренние отступы, если необходимо */
+        background-color: #fff; /* Убедитесь, что фон установлен для визуального эффекта */
+        border-radius: 8px; /* Углы контейнера будут скругленными */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+    }
+</style>
+{% endblock content %}

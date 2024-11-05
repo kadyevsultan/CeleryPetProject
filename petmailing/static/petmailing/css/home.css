@@ -210,12 +210,6 @@ header ul li a:hover {
     box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
 }
 
-/* Выравнивание контейнера */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* Стили для страницы подтверждения сброса пароля */
 .success-message-container {
@@ -278,6 +272,7 @@ header ul li a:hover {
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
+
 
 /* Футер */
 footer {

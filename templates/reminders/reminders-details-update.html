@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h2>Детали Напоминания</h2>
+
+    <div class="reminder-details">
+        <h3>{{ reminder.title }}</h3>
+        <p><strong>Описание:</strong> {{ reminder.description }}</p>
+        <p><strong>Дата Напоминания:</strong> {{ reminder.date }}</p>
+        <p><strong>Статус:</strong> {{ reminder.is_completed|yesno:"Завершено,В процессе" }}</p>
+    </div>
+
+    <h3>Обновить Напоминание</h3>
+    <div class="update-form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Обновить Напоминание</button>
+        </form>
+    </div>
+
+    <div class="actions mt-3">
+        <a href="{% url 'reminders:reminders-home' %}" class="btn btn-secondary">Назад к Напоминаниям</a>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 20px auto; /* Центрирование контейнера и добавление отступа сверху */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center; /* Выравнивание заголовка по центру */
+        margin-bottom: 20px; /* Отступ снизу */
+    }
+
+    .reminder-details {
+        margin-bottom: 30px; /* Добавление отступа снизу */
+        padding: 15px; /* Добавление внутреннего отступа */
+        border: 1px solid #e0e0e0; /* Легкая граница для выделения */
+        border-radius: 5px; /* Скругление углов */
+        background-color: #f9f9f9; /* Светлый фон для деталей */
+    }
+
+    .reminder-details h3 {
+        color: #4CAF50; /* Цвет заголовка */
+        margin-bottom: 10px; /* Отступ снизу */
+    }
+
+    .update-form {
+        margin-top: 20px; /* Отступ сверху */
+    }
+
+    .actions {
+        margin-top: 30px; /* Отступ сверху */
+        text-align: center; /* Центрирование кнопки */
+    }
+
+    .btn {
+        display: inline-block; /* Делает кнопку блочным элементом */
+        margin: 5px; /* Отступ вокруг кнопок */
+    }
+</style>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'reminders/css/reminders-home.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+<!-- Мэйн-контейнер -->
+    <section class="kanban-board">
+        {% if reminders.exists %}
+            <section class="kanban-board">
+                <div class="column">
+                    <h2>Ваши Напоминания</h2>
+                    {% for reminder in reminders %}
+                        <a href="{% url 'reminders:reminders-details' reminder.slug %}">
+                            <div class="reminder-card">
+                                <p>{{ reminder.title }}</p>
+                                <p>{{ reminder.description }}</p>
+                                <p>Дата: {{ reminder.date|date:"d.m.Y H:i" }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    <a href="{% url 'reminders:reminders-add' %}" class="add-reminder-btn">Добавить напоминание</a>
+                </div>
+                
+                <div class="column">
+                    <h2>Завершенные напоминания</h2>
+                    {% for completed in completed_reminders %}
+                        <a href="{% url 'reminders:reminders-details' reminder.slug %}">
+                            <div class="reminder-card">
+                                <p>{{ completed.title }}</p>
+                                <p>{{ completed.description }}</p>
+                                <p>Дата завершения: {{ completed.completed_date|date:"d.m.Y H:i" }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </section>
+        {% else %}
+            <section class="empty-reminders">
+                <h2>У вас еще нет напоминаний</h2>
+                <a href="{% url 'reminders:reminders-add' %}" class="add-reminder-btn">Добавить напоминание</a>
+            </section>
+        {% endif %}
+    </section>
+
+{% endblock content %}

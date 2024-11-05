@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     # My apps
     'accounts.apps.AccountsConfig',
+    'reminders.apps.RemindersConfig',
 ]
 
 MIDDLEWARE = [

@@ -16,8 +16,11 @@
             <!-- Кнопка для сохранения изменений -->
             <button type="submit" class="btn btn-primary">Сохранить изменения</button>
         </form>
-
-        <!-- Кнопка для удаления аккаунта -->
+        <br>
+        <a href='{% url "accounts:password-reset" %}'>
+            <button class="btn btn-primary">Сменить пароль</button>
+        </a>
+        <br>
         <a href='{% url "accounts:delete-account-user" %}'>
             <button class="btn btn-danger">Удалить аккаунт</button>
         </a>

@@ -32,46 +32,13 @@ def register_user(request):
     else:
         form = RegistrationForm()
     return render(request, 'accounts/registration/register.html', {'form': form})
-
-
-# def password_reset_email(request):
-#     form = EmailVerificationForm()
-#     if request.method == 'POST':
-#         form = EmailVerificationForm(request.POST)
-        
-#         if form.is_valid():
-#             email = form.cleaned_data.get('email')
-#             user = User.objects.get(email=email)
-#             send_password(user)
-#             return redirect('/accounts/email-verification-sent/')
-#     else:
-#         form = EmailVerificationForm()
-            
-#     return render(request, 'accounts/password/password-reset-email.html', {'form': form})
-
-# def password_change(request):
-#     form = PasswordResetForm()
-#     if request.method == 'POST':
-#         form = PasswordResetForm(request.POST, instance=request.user)
-        
-#         if form.is_valid():
-#             password1 = form.cleaned_data.get('password1')
-#             password2 = form.cleaned_data.get('password2')
-#             user = User.objects.get(id=request.user.id)
-#             user.set_password(password1)
-#             user.save()
-#             return redirect('accounts:login')
-#     else:
-#         form = PasswordResetForm(instance=request.user)
-#     return render(request, 'accounts/password/password-change-template.html', {'form': form, 'username': request.user.username})
-      
-      
+ 
 
 def login_user(request):
     form = LoginForm()
     
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('reminders:reminders-home')
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -83,7 +50,7 @@ def login_user(request):
         
         if request.user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('reminders:reminders-home')
         else:
             messages.info(request, 'Неправильное имя пользователя или пароль')
             return redirect('accounts:login')

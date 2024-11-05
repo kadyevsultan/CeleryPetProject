@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="reminder-detail bg-white shadow-md p-4 rounded">
+        <h2>{{ reminder.title }}</h2>
+        <p><strong>Описание:</strong> {{ reminder.description }}</p>
+        <p><strong>Дата Напоминания:</strong> {{ reminder.date|date:"d.m.Y H:i" }}</p>
+        <p><strong>Статус:</strong> {% if reminder.is_completed %} Завершено {% else %} В процессе {% endif %}</p>
+        
+        <a href="{% url 'reminders:reminders-details-update' reminder.slug %}" class="btn btn-primary mt-3">Редактировать</a>
+        <a href="{% url 'reminders:reminders-details-delete' reminder.slug %}" class="btn btn-primary mt-3">Удалить</a>
+        <a href="{% url 'reminders:reminders-home' %}" class="btn btn-primary mt-3">Назад к напоминаниям</a>
+    </div>
+</div>
+
+<style>
+    .reminder-detail a{
+        text-decoration: none;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+{% endblock content %}
