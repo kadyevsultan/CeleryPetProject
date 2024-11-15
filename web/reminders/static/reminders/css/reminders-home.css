@@ -1,0 +1,37 @@
+/* Выравнивание контейнера */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-reminders {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.empty-reminders h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.add-reminder-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.add-reminder-btn:hover {
+    background-color: #45a049;
+}
+
+.kanban-board a {
+    text-decoration: none;
+    color: inherit;
+}

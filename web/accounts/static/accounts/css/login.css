@@ -1,0 +1,78 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0e5ec, #f4f4f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Контейнер для формы входа */
+.login-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.register-link, .forgot-password {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+a {
+    color: #008CBA;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

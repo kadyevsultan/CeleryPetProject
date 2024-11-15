@@ -1,0 +1,50 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0e5ec, #f4f4f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Контейнер подтверждения */
+.confirmation-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Кнопка возврата */
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #008CBA;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #007bb5;
+}

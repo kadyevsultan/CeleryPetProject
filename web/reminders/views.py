@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from datetime import datetime
 from .models import Reminder
 from .forms import AddReminderForm, UpdateReminderForm
+from .tasks import send_reminder_email
 
 @login_required(login_url='accounts:login')
 def reminders_home(request):
@@ -24,7 +25,11 @@ class ReminderContact(LoginRequiredMixin, CreateView):
     template_name = 'reminders/reminders-add.html'
 
     def form_valid(self, form):
-        form.instance.user_id = self.request.user
+        reminder = form.save(commit=False)
+        reminder.user_id = self.request.user
+        reminder.save()
+    
+        send_reminder_email.apply_async((reminder.id,), eta=reminder.date)
         return super().form_valid(form)
 
 @login_required(login_url='accounts:login')

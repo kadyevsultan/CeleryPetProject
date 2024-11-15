@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.card-body {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    font-size: 1rem;
+    padding: 0.75rem;
+    transition: background-color 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,70 @@
+volumes:
+  postgres_data:
+  static_data:
+
+networks:
+  celerypet:  # Название сети
+    driver: bridge
+
+services:
+  db:
+    image: postgres:17.0-alpine
+    container_name: celerypet-db
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - celerypet
+
+  web:
+    build: ./web
+    container_name: celerypet-web
+    env_file: .env
+    volumes:
+      - static_data:/app/static
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    links:
+      - db
+    restart: always
+    command: sh -c "python3 manage.py makemigrations &&
+                    python3 manage.py migrate &&
+                    python3 manage.py collectstatic --noinput &&
+                    gunicorn petmailing.wsgi:application --bind 0.0.0.0:8000"
+    networks:
+      - celerypet
+
+  redis:
+    image: redis:7.4.1-alpine
+    container_name: celerypet-redis
+    restart: unless-stopped
+    networks:
+      - celerypet
+
+  celery:
+    build: ./web
+    container_name: celerypet-celery
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - static_data:/app/static
+    restart: always
+    command: celery -A petmailing worker --loglevel=info --beat
+    networks:
+      - celerypet
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: celerypet-nginx
+    volumes:
+      - static_data:/app/static
+    ports:
+      - 80:80
+    restart: always
+    networks:
+      - celerypet
