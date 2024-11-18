@@ -12,9 +12,15 @@ from .tasks import send_reminder_email
 @login_required(login_url='accounts:login')
 def reminders_home(request):
     reminders = Reminder.objects.all().filter(user_id=request.user)
-    completed_reminders = Reminder.objects.filter(user_id=request.user, is_completed=True)    
+    active_reminders = Reminder.objects.all().filter(user_id=request.user, is_completed=False)
+    completed_reminders = Reminder.objects.all().filter(user_id=request.user, is_completed=True)    
     current_year = datetime.now().year
-    context = {'reminders': reminders,'completed_reminders': completed_reminders,'current_year': current_year}
+    context = {
+        'reminders': reminders, 
+        'active_reminders': active_reminders,
+        'completed_reminders': completed_reminders,
+        'current_year': current_year
+        }
     return render(request, 'reminders/reminders-home.html', context)
 
 

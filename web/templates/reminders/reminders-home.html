@@ -14,12 +14,12 @@
             <section class="kanban-board">
                 <div class="column">
                     <h2>Ваши Напоминания</h2>
-                    {% for reminder in reminders %}
-                        <a href="{% url 'reminders:reminders-details' reminder.slug %}">
+                    {% for active in active_reminders %}
+                        <a href="{% url 'reminders:reminders-details' active.slug %}">
                             <div class="reminder-card">
-                                <p>{{ reminder.title }}</p>
-                                <p>{{ reminder.description }}</p>
-                                <p>Дата: {{ reminder.date|date:"d.m.Y H:i" }}</p>
+                                <p>{{ active.title }}</p>
+                                <p>{{ active.description }}</p>
+                                <p>Дата: {{ active.date|date:"d.m.Y H:i" }}</p>
                             </div>
                         </a>
                     {% endfor %}
@@ -29,11 +29,11 @@
                 <div class="column">
                     <h2>Завершенные напоминания</h2>
                     {% for completed in completed_reminders %}
-                        <a href="{% url 'reminders:reminders-details' reminder.slug %}">
+                        <a href="{% url 'reminders:reminders-details' completed.slug %}">
                             <div class="reminder-card">
                                 <p>{{ completed.title }}</p>
                                 <p>{{ completed.description }}</p>
-                                <p>Дата завершения: {{ completed.completed_date|date:"d.m.Y H:i" }}</p>
+                                <p>Дата завершения: {{ completed.date|date:"d.m.Y H:i" }}</p>
                             </div>
                         </a>
                     {% endfor %}

@@ -33,7 +33,7 @@ services:
     command: sh -c "python3 manage.py makemigrations &&
                     python3 manage.py migrate &&
                     python3 manage.py collectstatic --noinput &&
-                    gunicorn petmailing.wsgi:application --bind 0.0.0.0:8000"
+                    gunicorn petmailing.wsgi:application --bind 0.0.0.0:8000 --timeout 120"
     networks:
       - celerypet
 
