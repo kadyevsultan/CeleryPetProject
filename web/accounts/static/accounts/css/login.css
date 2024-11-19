@@ -45,24 +45,42 @@ input {
     border-radius: 5px;
 }
 
-.btn-submit {
+/* Кнопка отправки формы */
+.btn-submit, .btn-google {
     display: inline-block;
-    padding: 10px 20px;
+    width: 320px; /* Фиксированная ширина для обеих кнопок */
+    padding: 12px;
     margin-top: 10px;
     border-radius: 5px;
-    background-color: #4CAF50;
     color: white;
     text-decoration: none;
     font-weight: bold;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px; /* Размер шрифта для улучшения читаемости */
+    text-align: center;
+}
+
+/* Кнопка отправки формы */
+.btn-submit {
+    background-color: #4CAF50;
 }
 
 .btn-submit:hover {
     background-color: #45a049;
 }
 
+/* Кнопка входа через Google */
+.btn-google {
+    background-color: #4285F4;
+}
+
+.btn-google:hover {
+    background-color: #3367D6;
+}
+
+/* Ссылки регистрации и восстановления пароля */
 .register-link, .forgot-password {
     margin-top: 15px;
     font-size: 0.9rem;

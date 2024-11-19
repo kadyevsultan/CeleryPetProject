@@ -10,6 +10,7 @@ urlpatterns = [
     path('reminders/', include('reminders.urls', namespace='reminders')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('email/', include(email_urls), name='email-verification'),
+    path('social-auth/', include('social_django.urls', namespace='social')),
     path('', index, name='index'),
 ]
 
