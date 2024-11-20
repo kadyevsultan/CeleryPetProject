@@ -18,7 +18,17 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="btn btn-success w-100">Создать напоминание</button>
+                <a href="{% url 'reminders:reminders-home' %}" class="btn btn-primary mt-3">Назад к напоминаниям</a>
             </form>
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

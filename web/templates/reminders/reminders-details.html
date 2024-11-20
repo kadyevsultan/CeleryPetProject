@@ -7,8 +7,10 @@
     <div class="reminder-detail bg-white shadow-md p-4 rounded">
         <h2>{{ reminder.title }}</h2>
         <p><strong>Описание:</strong> {{ reminder.description }}</p>
-        <p><strong>Дата Напоминания:</strong> {{ reminder.date|date:"d.m.Y H:i" }}</p>
+        <p><strong>Дата для Напоминания:</strong> {{ reminder.date|date:"d.m.Y H:i" }}</p>
         <p><strong>Статус:</strong> {% if reminder.is_completed %} Завершено {% else %} В процессе {% endif %}</p>
+        <p><strong>Интервал напоминания:</strong> {{ reminder_repeat_interval }}</p>
+        <p><strong>Время отправки напоминания:</strong> {{ actual_send_time|date:"d F Y г. H:i" }}</p>
         
         <a href="{% url 'reminders:reminders-details-update' reminder.slug %}" class="btn btn-primary mt-3">Редактировать</a>
         <a href="{% url 'reminders:reminders-details-delete' reminder.slug %}" class="btn btn-primary mt-3">Удалить</a>

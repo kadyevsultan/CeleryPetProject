@@ -7,9 +7,16 @@ class AddReminderForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 2}))
     date = forms.DateTimeField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'datetime-local'}))
+    repeat_interval = forms.ChoiceField(choices=[('none', 'Не повторять'),
+                                                 ('daily', 'Ежедневно'),
+                                                ('weekly', 'Еженедельно'),
+                                                ('monthly', 'Ежемесячно'),
+                                                ],
+                                        widget=forms.Select(attrs={'class': 'form-control'}))
+    notification_time = forms.DurationField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите длительность (например, 1:00:00 для 1 часа)'}))
     class Meta:
         model = Reminder
-        fields = ['title', 'description', 'date']
+        fields = ['title', 'description', 'date', 'repeat_interval', 'notification_time']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,6 +24,8 @@ class AddReminderForm(forms.ModelForm):
         self.fields['title'].label = 'Заголовок Напоминания'
         self.fields['description'].label = 'Описание Напоминания'
         self.fields['date'].label = 'Дата для Напоминания'
+        self.fields['repeat_interval'].label = 'Интервал повтора'
+        self.fields['notification_time'].label = 'За сколько времени до события отправлять напоминание'
         
     def clean_title(self):
         title = self.cleaned_data['title']
@@ -41,9 +50,16 @@ class UpdateReminderForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 2}))
     date = forms.DateTimeField(widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'datetime-local'}))
+    repeat_interval = forms.ChoiceField(choices=[('none', 'Не повторять'),
+                                                 ('daily', 'Ежедневно'),
+                                                ('weekly', 'Еженедельно'),
+                                                ('monthly', 'Ежемесячно'),
+                                                ],
+                                        widget=forms.Select(attrs={'class': 'form-control'}))
+    notification_time = forms.DurationField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите длительность (например, 1:00:00 для 1 часа)'}))
     class Meta:
         model = Reminder
-        fields = ['title', 'description', 'date']
+        fields = ['title', 'description', 'date', 'repeat_interval', 'notification_time']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,6 +67,8 @@ class UpdateReminderForm(forms.ModelForm):
         self.fields['title'].label = 'Заголовок Напоминания'
         self.fields['description'].label = 'Описание Напоминания'
         self.fields['date'].label = 'Дата для Напоминания'
+        self.fields['repeat_interval'].label = 'Интервал повтора'
+        self.fields['notification_time'].label = 'За сколько времени до события отправлять напоминание'
         
     def clean_title(self):
         title = self.cleaned_data['title']

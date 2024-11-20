@@ -87,7 +87,9 @@
             <div class="reminder-details">
                 <p><strong>Тема:</strong> {{ reminder_title }}</p>
                 <p><strong>Описание:</strong> {{ reminder_description }}</p>
-                <p><strong>Дата и время:</strong> {{ reminder_date }}</p>
+                <p><strong>Дата для напоминания:</strong> {{ reminder_date }}</p>
+                <p><strong>Интервал напоминания:</strong> {{ reminder_repeat_interval }}</p>
+                <p><strong>Время отправки напоминания:</strong> {{ actual_send_time|date:"d F Y г. H:i" }}</p>
             </div>
 
             <p>Пожалуйста, убедитесь, что вы выполните это напоминание вовремя.</p>

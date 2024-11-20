@@ -13,6 +13,13 @@ class Reminder(models.Model):
     description = models.TextField(max_length=500,blank=True, null=True)
     is_completed = models.BooleanField(default=False)
     date = models.DateTimeField()
+    repeat_interval = models.CharField(max_length=20, 
+                                       choices=[('daily', 'Ежедневно'),
+                                                ('weekly', 'Еженедельно'),
+                                                ('monthly', 'Ежемесячно'),
+                                                ('none', 'Не повторять')], default='none')
+    notification_time = models.DurationField(null=True, blank=True, 
+                                             help_text='За сколько времени до события отправлять напоминание (например, 1 час или 30 минут)')
     slug = models.SlugField('URL', max_length=250, unique=True, blank=True)
     
     class Meta:
